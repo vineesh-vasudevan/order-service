@@ -3,14 +3,14 @@ namespace OrderService.Domain.Common
 {
     public interface IEntity<T> : IEntity
     {
-        public T Id { get; init; }
+        public T Id { get; }
     }
 
     public interface IEntity
     {
-        public DateTime? CreatedAt { get; init; }
-        public string? CreatedBy { get; init; }
-        public DateTime? LastModifiedAt { get; init; }
-        public string? LastModifiedBy { get; init; }
+        public DateTime? CreatedAt { get; }
+        public string? CreatedBy { get; }
+        public DateTime? LastModifiedAt { get; }
+        public string? LastModifiedBy { get; }
     }
 }

@@ -3,10 +3,10 @@ namespace OrderService.Domain.Common
 {
     public abstract class Entity<T> : IEntity<T>
     {
-        public required T Id { get; init; }
-        public DateTime? CreatedAt { get; init; }
-        public string? CreatedBy { get; init; }
-        public DateTime? LastModifiedAt { get; init; }
-        public string? LastModifiedBy { get; init; }
+        public T Id { get; protected set; }
+        public DateTime? CreatedAt { get; protected set; }
+        public string? CreatedBy { get; protected set; }
+        public DateTime? LastModifiedAt { get; protected set; }
+        public string? LastModifiedBy { get; protected set; }        
     }
 }
