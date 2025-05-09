@@ -15,11 +15,7 @@ namespace OrderService.Domain.Entities
            string productCode,
            int quantity,
            decimal unitPrice,
-           decimal totalPrice,
-           DateTime createdAt,
-           DateTime lastModifiedAt,
-           string createdBy,
-           string lastModifiedBy)
+           decimal totalPrice)
         {
             if (id.Value == Guid.Empty)
                 throw new ArgumentException("OrderItemId is required.", nameof(id));
@@ -33,7 +29,6 @@ namespace OrderService.Domain.Entities
             if (unitPrice < 0)
                 throw new ArgumentOutOfRangeException(nameof(unitPrice), "UnitPrice cannot be negative.");
 
-
             if (totalPrice < 0)
                 throw new ArgumentOutOfRangeException(nameof(totalPrice), "TotalPrice cannot be negative.");
 
@@ -44,13 +39,8 @@ namespace OrderService.Domain.Entities
                 ProductCode = productCode,
                 Quantity = quantity,
                 UnitPrice = unitPrice,
-                TotalPrice = totalPrice,
-                CreatedAt = createdAt,
-                LastModifiedAt = lastModifiedAt,
-                CreatedBy = createdBy,
-                LastModifiedBy = lastModifiedBy
+                TotalPrice = totalPrice
             };
-
         }
     }
 }

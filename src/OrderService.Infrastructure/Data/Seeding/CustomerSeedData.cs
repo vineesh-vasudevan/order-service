@@ -12,22 +12,14 @@ namespace OrderService.Infrastructure.Data.Seeding
                 id: CustomerOne,
                 firstName: "John",
                 lastName: "Wick",
-                email: "john.Wick@example.com",
-                createdAt: DateTime.UtcNow,
-                lastModifiedAt: DateTime.UtcNow,
-                createdBy: "seeder",
-                lastModifiedBy: "seeder"
+                email: "john.Wick@example.com"
             );
 
             yield return Customer.Create(
                 id: CustomerTwo,
                 firstName: "Jose ",
                 lastName: "Mourinho",
-                email: "Mourinho@example.com",
-                createdAt: DateTime.UtcNow,
-                lastModifiedAt: DateTime.UtcNow,
-                createdBy: "seeder",
-                lastModifiedBy: "seeder"
+                email: "Mourinho@example.com"
             );
         }
     }

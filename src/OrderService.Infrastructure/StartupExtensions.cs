@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using OrderService.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using OrderService.Infrastructure.Data;
+using OrderService.Infrastructure.Data.Interceptors;
 
 namespace OrderService.Infrastructure
 {
@@ -11,9 +9,12 @@ namespace OrderService.Infrastructure
         {
             var orderDbConnection = configuration.GetConnectionString("OrderDbConnection");
 
+            services.AddScoped<AuditInterceptor>();
+
             services.AddDbContext<OrderDbContext>((sp, options) =>
             {
-                options.UseSqlServer(orderDbConnection);
+                options.UseSqlServer(orderDbConnection)
+                    .AddInterceptors(sp.GetRequiredService<AuditInterceptor>());
             });
 
             return services;

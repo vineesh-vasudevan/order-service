@@ -25,11 +25,7 @@ namespace OrderService.Domain.Entities
             OrderName orderName,
             Address shippingAddress,
             Address billingAddress,
-            Payment payment,
-            DateTime createdAt,
-            DateTime lastModifiedAt,
-            string createdBy,
-            string lastModifiedBy)
+            Payment payment)
         {
             if (id.Value == Guid.Empty)
                 throw new ArgumentException("OrderId is required.", nameof(id));
@@ -53,10 +49,6 @@ namespace OrderService.Domain.Entities
                 BillingAddress = billingAddress,
                 Payment = payment,
                 Status = OrderStatus.Pending,
-                CreatedAt = createdAt,
-                LastModifiedAt = lastModifiedAt,
-                CreatedBy = createdBy,
-                LastModifiedBy = lastModifiedBy,
             };
         }
 
@@ -65,11 +57,7 @@ namespace OrderService.Domain.Entities
             Address shippingAddress,
             Address billingAddress,
             Payment payment,
-            OrderStatus status,
-            DateTime createdAt,
-            DateTime lastModifiedAt,
-            string createdBy,
-            string lastModifiedBy)
+            OrderStatus status)
         {
             if (string.IsNullOrEmpty(orderName.Value))
                 throw new ArgumentNullException(nameof(orderName));
@@ -80,15 +68,11 @@ namespace OrderService.Domain.Entities
             if (payment is null)
                 throw new ArgumentNullException(nameof(payment));
 
-        OrderName = orderName;
+            OrderName = orderName;
             ShippingAddress = shippingAddress;
             BillingAddress = billingAddress;
             Payment = payment;
             Status = status;
-            CreatedAt = createdAt;
-            LastModifiedAt = lastModifiedAt;
-            CreatedBy = createdBy;
-            LastModifiedBy = lastModifiedBy;
         }
 
         public void Add(OrderItem orderItem)

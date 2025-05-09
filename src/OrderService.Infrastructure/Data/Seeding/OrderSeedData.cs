@@ -20,11 +20,7 @@ namespace OrderService.Infrastructure.Data.Seeding
                     paymentMethod: "Credit Card",
                     isSuccessful: true,
                     transactionId: TransactionId.Of("TXN123456")
-                ),
-                createdAt: DateTime.UtcNow,
-                lastModifiedAt: DateTime.UtcNow,
-                createdBy: "seeder",
-                lastModifiedBy: "seeder"
+                )
             );
 
             order.Add(OrderItem.Create(
@@ -33,11 +29,7 @@ namespace OrderService.Infrastructure.Data.Seeding
                 productCode: "PROD001",
                 quantity: 1,
                 unitPrice: 49.99m,
-                totalPrice: 49.99m,
-                createdAt: DateTime.UtcNow,
-                lastModifiedAt: DateTime.UtcNow,
-                createdBy: "seeder",
-                lastModifiedBy: "seeder"
+                totalPrice: 49.99m
             ));
 
             order.Add(OrderItem.Create(
@@ -46,11 +38,7 @@ namespace OrderService.Infrastructure.Data.Seeding
                 productCode: "PROD002",
                 quantity: 2,
                 unitPrice: 39.99m,
-                totalPrice: 79.98m,
-                createdAt: DateTime.UtcNow,
-                lastModifiedAt: DateTime.UtcNow,
-                createdBy: "seeder",
-                lastModifiedBy: "seeder"
+                totalPrice: 79.98m
             ));
 
             return [order];

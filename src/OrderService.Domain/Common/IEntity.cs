@@ -12,5 +12,7 @@ namespace OrderService.Domain.Common
         public string? CreatedBy { get; }
         public DateTime? LastModifiedAt { get; }
         public string? LastModifiedBy { get; }
+
+        void SetAudit(string user, bool isNewlyAdded);
     }
 }
