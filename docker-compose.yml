@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  orderdb:
+    image: mcr.microsoft.com/mssql/server
+  orderservice.api:
+    image: ${DOCKER_REGISTRY-}orderserviceapi
+    build:
+      context: .
+      dockerfile: src/OrderService.Api/Dockerfile
