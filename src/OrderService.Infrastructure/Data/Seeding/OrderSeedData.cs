@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Infrastructure.Data.Seeding
+﻿namespace OrderService.Infrastructure.Data.Seeding
 {
     public static class OrderSeedData
     {
@@ -23,23 +22,33 @@ namespace OrderService.Infrastructure.Data.Seeding
                 )
             );
 
-            order.Add(OrderItem.Create(
+            order.SetAudit("System", true);
+
+            var orderItem1 = OrderItem.Create(
                 id: OrderItemId.Of(Guid.Parse("44444444-4444-4444-4444-444444444444")),
                 orderId: orderId,
                 productCode: "PROD001",
                 quantity: 1,
                 unitPrice: 49.99m,
                 totalPrice: 49.99m
-            ));
+            );
 
-            order.Add(OrderItem.Create(
+            orderItem1.SetAudit("System", true);
+
+            order.Add(orderItem1);
+
+            var orderItem2 = OrderItem.Create(
                 id: OrderItemId.Of(Guid.Parse("55555555-5555-5555-5555-555555555555")),
                 orderId: orderId,
                 productCode: "PROD002",
                 quantity: 2,
                 unitPrice: 39.99m,
                 totalPrice: 79.98m
-            ));
+            );
+
+            orderItem2.SetAudit("System", true);
+
+            order.Add(orderItem2);
 
             return [order];
         }

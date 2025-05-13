@@ -1,4 +1,6 @@
-﻿
+﻿using CSharpFunctionalExtensions;
+using OrderService.Domain.Events;
+
 namespace OrderService.Domain.Entities
 {
     public class Order : Aggregate<OrderId>
@@ -15,7 +17,7 @@ namespace OrderService.Domain.Entities
 
         public decimal TotalPrice
         {
-            get => _items.Sum(x => x.TotalPrice);
+            get => _items.Where(x => x.Status != OrderItemStatus.Cancelled).Sum(x => x.TotalPrice);
             private set { }
         }
 
@@ -40,7 +42,7 @@ namespace OrderService.Domain.Entities
             if (payment is null)
                 throw new ArgumentNullException(nameof(payment));
 
-            return new Order
+            var order = new Order
             {
                 Id = id,
                 CustomerId = customerId,
@@ -50,6 +52,9 @@ namespace OrderService.Domain.Entities
                 Payment = payment,
                 Status = OrderStatus.Pending,
             };
+
+            order.AddDomainEvent(new OrderCreatedEvent(order));
+            return order;
         }
 
         public void Update(
@@ -57,7 +62,8 @@ namespace OrderService.Domain.Entities
             Address shippingAddress,
             Address billingAddress,
             Payment payment,
-            OrderStatus status)
+            OrderStatus status,
+            string modifiedBy)
         {
             if (string.IsNullOrEmpty(orderName.Value))
                 throw new ArgumentNullException(nameof(orderName));
@@ -73,6 +79,18 @@ namespace OrderService.Domain.Entities
             BillingAddress = billingAddress;
             Payment = payment;
             Status = status;
+
+            SetAudit(modifiedBy, false);
+        }
+
+        public void Cancel(string modifiedBy)
+        {
+            Status = OrderStatus.Cancelled;
+            SetAudit(modifiedBy, false);
+            foreach (var item in Items)
+            {
+                item.Cancel(modifiedBy);
+            }
         }
 
         public void Add(OrderItem orderItem)
@@ -93,6 +111,43 @@ namespace OrderService.Domain.Entities
                 throw new ArgumentException("OrderItemId is invalid.", nameof(id));
             var orderItem = _items.FirstOrDefault(x => x.Id == id) ?? throw new OrderItemNotFoundException(id);
             _items.Remove(orderItem);
+        }
+
+        public Maybe<OrderItem> GetOrderItem(Guid id) =>
+            _items.FirstOrDefault(x => x.Id.Value == id && x.Status != OrderItemStatus.Cancelled);
+
+        public void CancelOrderItem(Guid orderItemId, string modifiedBy)
+        {
+            var maybeOrderItem = GetOrderItem(orderItemId);
+
+            if (maybeOrderItem.HasNoValue)
+            {
+                throw new OrderItemNotFoundException(orderItemId);
+            }
+
+            var orderItem = maybeOrderItem.Value;
+
+            orderItem.Cancel(modifiedBy);
+            SetAudit(modifiedBy, false);
+        }
+
+        public void UpdateOrderItem(Guid orderItemId, int quantity, string modifiedBy)
+        {
+            var maybeOrderItem = GetOrderItem(orderItemId);
+
+            if (maybeOrderItem.HasNoValue)
+            {
+                throw new OrderItemNotFoundException(orderItemId);
+            }
+
+            var orderItem = maybeOrderItem.Value;
+            orderItem.UpdateQuantity(quantity, modifiedBy);
+            SetAudit(modifiedBy, false);
+        }
+
+        public void RemoveCancelledItems()
+        {
+            _items.RemoveAll(i => i.Status == OrderItemStatus.Cancelled);
         }
     }
 }

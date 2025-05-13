@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Domain.Common
+﻿namespace OrderService.Domain.Common
 {
     public abstract class Entity<T> : IEntity<T>
     {
@@ -21,7 +20,6 @@ namespace OrderService.Domain.Common
 
             LastModifiedAt = now;
             LastModifiedBy = user;
-
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Infrastructure.Data.Interceptors
+﻿namespace OrderService.Infrastructure.Data.Interceptors
 {
     public class AuditInterceptor : SaveChangesInterceptor
     {

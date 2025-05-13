@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using OrderService.Domain.Enums;
 
 namespace OrderService.Infrastructure.Data.Configurations
 {
@@ -57,6 +57,15 @@ namespace OrderService.Infrastructure.Data.Configurations
             builder.Property(oi => oi.LastModifiedBy)
                    .IsRequired()
                    .HasMaxLength(100);
+
+            builder.Property(o => o.Status)
+              .IsRequired()
+              .HasConversion(
+                  status => status.Name,
+                  name => OrderItemStatus.FromName(name, true)
+              )
+              .HasMaxLength(50)
+              .HasColumnName("Status");
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Domain.Exceptions
+﻿namespace OrderService.Domain.Exceptions
 {
     public class NotFoundException(string message) : Exception(message)
     {

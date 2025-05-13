@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Infrastructure.Data.Seeding
+﻿namespace OrderService.Infrastructure.Data.Seeding
 {
     public class DbSeeder(OrderDbContext context)
     {

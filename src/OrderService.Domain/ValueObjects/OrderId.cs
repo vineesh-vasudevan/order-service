@@ -18,5 +18,4 @@
 
         public override string ToString() => Value.ToString();
     }
-
 }

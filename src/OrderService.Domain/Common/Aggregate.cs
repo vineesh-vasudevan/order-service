@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Domain.Common
+﻿namespace OrderService.Domain.Common
 {
     public abstract class Aggregate<TId> : Entity<TId>, IAggregate<TId>
     {
@@ -17,6 +16,6 @@ namespace OrderService.Domain.Common
             var events = _domainEvents.ToArray();
             _domainEvents.Clear();
             return events;
-        }       
+        }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace OrderService.Infrastructure.Data
 {
@@ -10,7 +8,7 @@ namespace OrderService.Infrastructure.Data
         {
             using var scope = app.Services.CreateScope();
             var dbContext = scope.ServiceProvider.GetRequiredService<OrderDbContext>();
-            await dbContext.Database.MigrateAsync();            
+            await dbContext.Database.MigrateAsync();
         }
     }
 }

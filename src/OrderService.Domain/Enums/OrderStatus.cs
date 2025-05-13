@@ -8,6 +8,8 @@
         public static readonly OrderStatus Delivered = new(nameof(Delivered), 3);
         public static readonly OrderStatus Cancelled = new(nameof(Cancelled), 4);
 
-        private OrderStatus(string name, int value) : base(name, value) { }
+        private OrderStatus(string name, int value) : base(name, value)
+        {
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace OrderService.Infrastructure.Data.Configurations
 {
@@ -35,7 +34,6 @@ namespace OrderService.Infrastructure.Data.Configurations
 
             builder.Property(c => c.LastModifiedAt)
                .IsRequired();
-
 
             builder.Property(c => c.CreatedBy)
                    .IsRequired()

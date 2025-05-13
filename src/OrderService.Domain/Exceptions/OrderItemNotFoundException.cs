@@ -1,7 +1,15 @@
-﻿
-namespace OrderService.Domain.Exceptions
+﻿namespace OrderService.Domain.Exceptions
 {
-    public class OrderItemNotFoundException(OrderItemId id) : NotFoundException($"Order Item {id.Value} was not found.")
+    public class OrderItemNotFoundException : NotFoundException
     {
+        public OrderItemNotFoundException(Guid id)
+            : base($"Order Item {id} was not found.")
+        {
+        }
+
+        public OrderItemNotFoundException(OrderItemId id)
+            : base($"Order Item {id.Value} was not found.")
+        {
+        }
     }
 }

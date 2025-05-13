@@ -30,5 +30,4 @@
         public static Currency CHF => new("CHF");
         public static Currency INR => new("INR");
     }
-
 }

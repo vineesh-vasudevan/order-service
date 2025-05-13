@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore;
 
 namespace OrderService.Infrastructure.Data.Extensions
 {
@@ -11,5 +10,4 @@ namespace OrderService.Infrastructure.Data.Extensions
                 r.TargetEntry.Metadata.IsOwned() &&
                 (r.TargetEntry.State == EntityState.Added || r.TargetEntry.State == EntityState.Modified));
     }
-
 }

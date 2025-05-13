@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace OrderService.Infrastructure.Data
+﻿namespace OrderService.Infrastructure.Data
 {
     public class OrderDbContext(DbContextOptions<OrderDbContext> options) : DbContext(options)
     {
@@ -16,4 +14,3 @@ namespace OrderService.Infrastructure.Data
         }
     }
 }
-    

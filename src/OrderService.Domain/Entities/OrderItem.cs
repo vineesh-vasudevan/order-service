@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Domain.Entities
+﻿namespace OrderService.Domain.Entities
 {
     public class OrderItem : Entity<OrderItemId>
     {
@@ -8,6 +7,7 @@ namespace OrderService.Domain.Entities
         public int Quantity { get; private set; } = default!;
         public decimal UnitPrice { get; private set; } = default!;
         public decimal TotalPrice { get; private set; } = default!;
+        public OrderItemStatus Status { get; private set; } = OrderItemStatus.Active;
 
         public static OrderItem Create(
            OrderItemId id,
@@ -39,8 +39,27 @@ namespace OrderService.Domain.Entities
                 ProductCode = productCode,
                 Quantity = quantity,
                 UnitPrice = unitPrice,
-                TotalPrice = totalPrice
+                TotalPrice = totalPrice,
+                Status = OrderItemStatus.Active
             };
+        }
+
+        public void Cancel(string modifiedBy)
+        {
+            Status = OrderItemStatus.Cancelled;
+            LastModifiedBy = modifiedBy;
+            LastModifiedAt = DateTime.UtcNow;
+        }
+
+        public void UpdateQuantity(int newQuantity, string modifiedBy)
+        {
+            if (newQuantity <= 0)
+                throw new ArgumentOutOfRangeException(nameof(newQuantity), "Quantity must be greater than zero.");
+
+            Quantity = newQuantity;
+            TotalPrice = UnitPrice * newQuantity;
+            LastModifiedBy = modifiedBy;
+            LastModifiedAt = DateTime.UtcNow;
         }
     }
 }

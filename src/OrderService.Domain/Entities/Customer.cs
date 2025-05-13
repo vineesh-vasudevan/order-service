@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Domain.Entities
+﻿namespace OrderService.Domain.Entities
 {
     public class Customer : Entity<CustomerId>
     {

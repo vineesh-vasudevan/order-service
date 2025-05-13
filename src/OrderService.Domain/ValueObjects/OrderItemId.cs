@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Domain.ValueObjects
+﻿namespace OrderService.Domain.ValueObjects
 {
     public readonly record struct OrderItemId
     {

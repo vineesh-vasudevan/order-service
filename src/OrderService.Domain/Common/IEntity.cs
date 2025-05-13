@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Domain.Common
+﻿namespace OrderService.Domain.Common
 {
     public interface IEntity<T> : IEntity
     {

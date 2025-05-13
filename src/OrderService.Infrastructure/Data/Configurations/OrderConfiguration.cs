@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OrderService.Domain.Enums;
 
 namespace OrderService.Infrastructure.Data.Configurations
@@ -76,7 +75,6 @@ namespace OrderService.Infrastructure.Data.Configurations
                        .HasColumnName("ShippingCountry")
                       .HasMaxLength(2)
                       .IsRequired();
-
                 });
 
             builder.ComplexProperty(
@@ -115,7 +113,6 @@ namespace OrderService.Infrastructure.Data.Configurations
                        .HasColumnName("BillingCountry")
                       .HasMaxLength(2)
                       .IsRequired();
-
                 });
 
             builder.ComplexProperty(
@@ -181,7 +178,6 @@ namespace OrderService.Infrastructure.Data.Configurations
             builder.Property(oi => oi.LastModifiedBy)
                    .IsRequired()
                    .HasMaxLength(100);
-
         }
     }
 }

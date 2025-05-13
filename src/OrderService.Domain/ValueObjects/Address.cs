@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Domain.ValueObjects
+﻿namespace OrderService.Domain.ValueObjects
 {
     public sealed record Address(
         string FirstName,
@@ -38,5 +37,4 @@ namespace OrderService.Domain.ValueObjects
             );
         }
     }
-
 }

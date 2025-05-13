@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Domain.ValueObjects
+﻿namespace OrderService.Domain.ValueObjects
 {
     public sealed record Payment(
         decimal Amount,

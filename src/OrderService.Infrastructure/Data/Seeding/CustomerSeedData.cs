@@ -1,5 +1,4 @@
-﻿
-namespace OrderService.Infrastructure.Data.Seeding
+﻿namespace OrderService.Infrastructure.Data.Seeding
 {
     public static class CustomerSeedData
     {
@@ -8,19 +7,27 @@ namespace OrderService.Infrastructure.Data.Seeding
 
         public static IEnumerable<Customer> GetSeedCustomers()
         {
-            yield return Customer.Create(
+            var customer1 = Customer.Create(
                 id: CustomerOne,
                 firstName: "John",
                 lastName: "Wick",
                 email: "john.Wick@example.com"
             );
 
-            yield return Customer.Create(
+            customer1.SetAudit("System", true);
+
+            yield return customer1;
+
+            var customer2 = Customer.Create(
                 id: CustomerTwo,
-                firstName: "Jose ",
+                firstName: "Jose",
                 lastName: "Mourinho",
                 email: "Mourinho@example.com"
             );
+
+            customer2.SetAudit("System", true);
+
+            yield return customer2;
         }
     }
 }
