@@ -18,8 +18,8 @@ namespace OrderService.Api.Endpoints.Orders
         }
 
         private static async Task<IResult> CreateOrder(
-        CreateOrderRequestDto request,
-        [FromServices] ISender sender)
+            CreateOrderRequestDto request,
+            [FromServices] ISender sender)
         {
             var command = new CreateOrderCommand(request);
             var result = await sender.Send(command);

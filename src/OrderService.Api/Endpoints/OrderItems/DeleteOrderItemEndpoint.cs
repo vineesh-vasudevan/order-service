@@ -17,9 +17,9 @@ namespace OrderService.Api.Endpoints.OrderItems
         }
 
         private static async Task<IResult> CancelOrderItem(
-        [FromRoute] Guid orderId,
-        [FromRoute] Guid itemId,
-        [FromServices] ISender sender)
+            [FromRoute] Guid orderId,
+            [FromRoute] Guid itemId,
+            [FromServices] ISender sender)
         {
             var command = new CancelOrderItemCommand(orderId, itemId);
             await sender.Send(command);

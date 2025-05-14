@@ -19,10 +19,10 @@ namespace OrderService.Api.Endpoints.OrderItems
         }
 
         private static async Task<IResult> PatchOrderItem(
-        [FromRoute] Guid orderId,
-        [FromRoute] Guid itemId,
-        [FromBody] OrderItemPatchRequestDto request,
-        [FromServices] ISender sender)
+            [FromRoute] Guid orderId,
+            [FromRoute] Guid itemId,
+            [FromBody] OrderItemPatchRequestDto request,
+            [FromServices] ISender sender)
         {
             var command = new UpdateOrderItemCommand(orderId, itemId, request);
             var result = await sender.Send(command);

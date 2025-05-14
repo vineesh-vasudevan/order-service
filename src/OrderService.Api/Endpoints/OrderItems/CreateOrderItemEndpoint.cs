@@ -18,9 +18,9 @@ namespace OrderService.Api.Endpoints.OrderItems
         }
 
         private static async Task<IResult> CreateOrderItem(
-        [FromRoute] Guid orderId,
-        CreateOrderItemRequestDto request,
-        [FromServices] ISender sender)
+            [FromRoute] Guid orderId,
+            CreateOrderItemRequestDto request,
+            [FromServices] ISender sender)
         {
             var command = new CreateOrderItemCommand(request, orderId);
             var result = await sender.Send(command);
