@@ -9,5 +9,7 @@ namespace OrderService.Domain.Repositories
         Task AddAsync(Order order, CancellationToken cancellationToken);
 
         void Update(Order order);
+
+        Task<IReadOnlyCollection<Order>> GetByCustomerIdAsync(Guid customerId, CancellationToken cancellationToken);
     }
 }

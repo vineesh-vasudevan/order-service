@@ -22,6 +22,23 @@ namespace OrderService.Infrastructure.Data.Repositories
             return Maybe.From(order);
         }
 
+        public async Task<IReadOnlyCollection<Order>> GetByCustomerIdAsync(Guid customerId, CancellationToken cancellationToken)
+        {
+            var customerIdValue = CustomerId.Of(customerId);
+
+            var orders = await orderDbContext.Orders
+                .Include(o => o.Items)
+                .AsNoTracking()
+                .Where(o => o.CustomerId == customerIdValue && o.Status != OrderStatus.Cancelled)
+                .OrderBy(o => o.OrderName.Value)
+                .ToListAsync(cancellationToken);
+
+            orders.ForEach(order => order.RemoveCancelledItems());
+
+            return orders.AsReadOnly();
+        }
+
+
         public async Task AddAsync(Order order, CancellationToken cancellationToken)
         {
             await orderDbContext.Orders.AddAsync(order, cancellationToken);
