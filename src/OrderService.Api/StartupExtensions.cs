@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using OrderService.Shared.Behaviors;
 using OrderService.Shared.Exceptions;
+using Serilog;
 using System.Text.Json.Serialization;
 
 namespace OrderService.Api
@@ -33,6 +34,17 @@ namespace OrderService.Api
 
         public static WebApplication UseApiServices(this WebApplication app)
         {
+            app.UseSerilogRequestLogging(options =>
+            {
+                options.EnrichDiagnosticContext = (diagnosticContext, httpContext) =>
+                {
+                    if (httpContext.Request.Headers.TryGetValue("X-Correlation-Id", out var correlationId))
+                    {
+                        diagnosticContext.Set("CorrelationId", correlationId.ToString());
+                    }
+                };
+            });
+
             app.MapCarter();
             app.UseExceptionHandler(options => { });
             app.UseHealthChecks("/health",
