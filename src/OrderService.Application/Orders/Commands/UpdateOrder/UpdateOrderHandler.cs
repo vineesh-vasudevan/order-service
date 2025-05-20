@@ -1,13 +1,4 @@
-﻿using OrderService.Contracts.Models.Input;
-using OrderService.Contracts.Models.Shared;
-using OrderService.Domain.Entities;
-using OrderService.Domain.Enums;
-using OrderService.Domain.Exceptions;
-using OrderService.Domain.Repositories;
-using OrderService.Domain.ValueObjects;
-using OrderService.Shared.CQRS;
-
-namespace OrderService.Application.Orders.Commands.UpdateOrder
+﻿namespace OrderService.Application.Orders.Commands.UpdateOrder
 {
     public class UpdateOrderHandler(IOrderRepository orderRepository, IUnitOfWork unitOfWork)
         : ICommandHandler<UpdateOrderCommand, bool>

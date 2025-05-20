@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using OrderService.Application.Common.MappingProfiles;
-using OrderService.Contracts.Models.Enums;
+using OrderService.Contracts.Dto.Enums;
 using OrderService.Domain.Enums;
 
 namespace OrderService.Application.Tests.Common.MappingProfiles

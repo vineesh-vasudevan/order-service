@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using OrderService.Contracts.Models.Output;
-using OrderService.Domain.Entities;
-
-namespace OrderService.Application.Common.MappingProfiles
+﻿namespace OrderService.Application.Common.MappingProfiles
 {
     public class OrderProfile : Profile
     {

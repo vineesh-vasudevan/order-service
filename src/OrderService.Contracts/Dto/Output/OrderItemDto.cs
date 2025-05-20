@@ -1,6 +1,6 @@
-﻿using OrderService.Contracts.Models.Enums;
+﻿using OrderService.Contracts.Dto.Enums;
 
-namespace OrderService.Contracts.Models.Output
+namespace OrderService.Contracts.Dto.Output
 {
     public record OrderItemDto
     {

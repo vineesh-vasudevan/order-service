@@ -1,8 +1,4 @@
-﻿using OrderService.Domain.Exceptions;
-using OrderService.Domain.Repositories;
-using OrderService.Shared.CQRS;
-
-namespace OrderService.Application.OrderItems.Commands.CancelOrderItem
+﻿namespace OrderService.Application.OrderItems.Commands.CancelOrderItem
 {
     public class CancelOrderItemHandler(IOrderRepository orderRepository, IUnitOfWork unitOfWork)
         : ICommandHandler<CancelOrderItemCommand, bool>

@@ -10,6 +10,16 @@ services:
     restart: always
     ports:
       - "1433:1433"
+  messagebroker:
+    container_name: messagebroker
+    hostname: ecommerce-mq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
   orderservice.api:
     image: orderserviceapi
@@ -18,13 +28,19 @@ services:
       dockerfile: src/OrderService.Api/Dockerfile
     depends_on:
       - orderdb
+      - messagebroker 
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__OrderDbConnection=Server=orderdb;Database=OrderDb;User Id=sa;Password=Order@123;Encrypt=False;TrustServerCertificate=True
+      - FeatureManagement__OrderEventPublishing=false
+      - MessageBroker__Host=amqp://ecommerce-mq:5672
+      - MessageBroker__UserName=guest
+      - MessageBroker__Password=guest
     ports:
-      - "8080:8080"
-      - "8081:8081"
+      - "6003:8080"
+      - "6063:8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

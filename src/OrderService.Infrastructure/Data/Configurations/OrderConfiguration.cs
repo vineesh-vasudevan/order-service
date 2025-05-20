@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using OrderService.Domain.Enums;
-
-namespace OrderService.Infrastructure.Data.Configurations
+﻿namespace OrderService.Infrastructure.Data.Configurations
 {
     public class OrderConfiguration : IEntityTypeConfiguration<Order>
     {

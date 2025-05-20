@@ -1,13 +1,4 @@
-﻿using Carter;
-using HealthChecks.UI.Client;
-using MediatR;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using OrderService.Shared.Behaviors;
-using OrderService.Shared.Exceptions;
-using Serilog;
-using System.Text.Json.Serialization;
-
-namespace OrderService.Api
+﻿namespace OrderService.Api
 {
     public static class StartupExtensions
     {

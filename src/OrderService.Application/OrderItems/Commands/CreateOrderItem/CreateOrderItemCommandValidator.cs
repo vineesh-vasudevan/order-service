@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace OrderService.Application.OrderItems.Commands.CreateOrderItem
+﻿namespace OrderService.Application.OrderItems.Commands.CreateOrderItem
 {
     public class CreateOrderItemCommandValidator : AbstractValidator<CreateOrderItemCommand>
     {

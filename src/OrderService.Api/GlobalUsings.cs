@@ -1,0 +1,14 @@
+﻿global using Carter;
+global using HealthChecks.UI.Client;
+global using MediatR;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+global using Microsoft.AspNetCore.Mvc;
+global using OrderService.Application;
+global using OrderService.Contracts.Dto.Input;
+global using OrderService.Contracts.Dto.Output;
+global using OrderService.Infrastructure;
+global using OrderService.Shared.Behaviors;
+global using OrderService.Shared.Exceptions;
+global using Serilog;
+global using Serilog.Events;
+global using System.Text.Json.Serialization;

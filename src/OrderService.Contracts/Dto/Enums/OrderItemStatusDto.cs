@@ -1,4 +1,4 @@
-﻿namespace OrderService.Contracts.Models.Enums
+﻿namespace OrderService.Contracts.Dto.Enums
 {
     public enum OrderItemStatusDto
     {

@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace OrderService.Infrastructure.Data.Interceptors
+﻿namespace OrderService.Infrastructure.Data.Interceptors
 {
     public class DomainEventsInterceptor(IMediator mediator) : SaveChangesInterceptor
     {

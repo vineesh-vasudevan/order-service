@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using OrderService.Contracts.Models.Input;
-
-namespace OrderService.Application.Orders.Commands.CreateOrder
+﻿namespace OrderService.Application.Orders.Commands.CreateOrder
 {
     public class CreateOrderItemRequestDtoValidator : AbstractValidator<CreateOrderItemRequestDto>
     {

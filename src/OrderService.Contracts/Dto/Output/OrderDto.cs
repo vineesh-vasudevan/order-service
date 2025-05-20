@@ -1,7 +1,7 @@
-﻿using OrderService.Contracts.Models.Enums;
+﻿using OrderService.Contracts.Dto.Enums;
 using OrderService.Contracts.Models.Shared;
 
-namespace OrderService.Contracts.Models.Output
+namespace OrderService.Contracts.Dto.Output
 {
     public record OrderDto
     {

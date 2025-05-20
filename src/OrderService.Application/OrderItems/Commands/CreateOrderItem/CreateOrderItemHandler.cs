@@ -1,10 +1,4 @@
-﻿using OrderService.Domain.Entities;
-using OrderService.Domain.Exceptions;
-using OrderService.Domain.Repositories;
-using OrderService.Domain.ValueObjects;
-using OrderService.Shared.CQRS;
-
-namespace OrderService.Application.OrderItems.Commands.CreateOrderItem
+﻿namespace OrderService.Application.OrderItems.Commands.CreateOrderItem
 {
     public class CreateOrderItemHandler(IOrderRepository orderRepository, IUnitOfWork unitOfWork)
         : ICommandHandler<CreateOrderItemCommand, Guid>

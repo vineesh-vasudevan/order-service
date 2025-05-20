@@ -1,9 +1,4 @@
-﻿using OrderService.Domain.Entities;
-using OrderService.Domain.Repositories;
-using OrderService.Domain.ValueObjects;
-using OrderService.Shared.CQRS;
-
-namespace OrderService.Application.Orders.Commands.CreateOrder
+﻿namespace OrderService.Application.Orders.Commands.CreateOrder
 {
     public class CreateOrderHandler(IOrderRepository orderRepository, IUnitOfWork unitOfWork)
         : ICommandHandler<CreateOrderCommand, Guid>
@@ -14,7 +9,7 @@ namespace OrderService.Application.Orders.Commands.CreateOrder
 
             try
             {
-                var request = command.CreateOrderRequest;
+                var request = command.Request;
 
                 var orderId = OrderId.Of(request.Id);
 

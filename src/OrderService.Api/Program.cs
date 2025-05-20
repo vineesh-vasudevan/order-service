@@ -1,10 +1,6 @@
 using OrderService.Api;
-using OrderService.Application;
-using OrderService.Infrastructure;
 using OrderService.Infrastructure.Data;
 using OrderService.Infrastructure.Data.Seeding;
-using Serilog;
-using Serilog.Events;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()

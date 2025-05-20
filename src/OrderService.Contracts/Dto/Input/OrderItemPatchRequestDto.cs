@@ -1,4 +1,4 @@
-﻿namespace OrderService.Contracts.Models.Input
+﻿namespace OrderService.Contracts.Dto.Input
 {
     public record OrderItemPatchRequestDto
     {

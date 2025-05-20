@@ -1,6 +1,4 @@
-﻿using Carter;
-using MediatR;
-using OrderService.Application.Orders.Commands.CancelOrder;
+﻿using OrderService.Application.Orders.Commands.CancelOrder;
 
 namespace OrderService.Api.Endpoints.Orders
 {

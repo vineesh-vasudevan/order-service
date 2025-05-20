@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace OrderService.Infrastructure.Data.Configurations
+﻿namespace OrderService.Infrastructure.Data.Configurations
 {
     public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
     {

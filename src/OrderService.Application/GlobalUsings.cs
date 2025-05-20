@@ -1,0 +1,15 @@
+﻿global using AutoMapper;
+global using FluentValidation;
+global using MediatR;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.FeatureManagement;
+global using OrderService.Contracts.Dto.Input;
+global using OrderService.Contracts.Dto.Output;
+global using OrderService.Contracts.Models.Shared;
+global using OrderService.Domain.Entities;
+global using OrderService.Domain.Enums;
+global using OrderService.Domain.Events;
+global using OrderService.Domain.Exceptions;
+global using OrderService.Domain.Repositories;
+global using OrderService.Domain.ValueObjects;
+global using OrderService.Shared.CQRS;

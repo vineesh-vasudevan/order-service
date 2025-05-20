@@ -2,11 +2,11 @@
 using FluentAssertions;
 using NSubstitute;
 using OrderService.Application.OrderItems.Commands.CreateOrderItem;
-using OrderService.Contracts.Models.Input;
+using OrderService.Contracts.Dto.Input;
 using OrderService.Domain.Entities;
 using OrderService.Domain.Exceptions;
 using OrderService.Domain.Repositories;
-using OrderService.Mocks;
+using OrderService.Mocks.Domain;
 
 namespace OrderService.Application.Tests.OrderItems.Commands.CreateOrderItem
 {
@@ -39,7 +39,7 @@ namespace OrderService.Application.Tests.OrderItems.Commands.CreateOrderItem
             _orderRepository.GetByIdAsync(orderId, Arg.Any<CancellationToken>())
                 .Returns(Maybe<Order>.From(order));
 
-            var request = new CreateOrderItemRequestDto             
+            var request = new CreateOrderItemRequestDto
             {
                 Id = orderItemId,
                 ProductCode = "ABC123",

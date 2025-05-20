@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace OrderService.Application.OrderItems.Commands.UpdateOrderItem
+﻿namespace OrderService.Application.OrderItems.Commands.UpdateOrderItem
 {
     public class UpdateOrderItemCommandValidator : AbstractValidator<UpdateOrderItemCommand>
     {
@@ -17,8 +15,11 @@ namespace OrderService.Application.OrderItems.Commands.UpdateOrderItem
             RuleFor(x => x.Request)
              .NotNull().WithMessage("Order item details are required.");
 
-            RuleFor(x => x.Request.Quantity)
+            When(x => x.Request is not null, () =>
+            {
+                RuleFor(x => x.Request.Quantity)
                 .GreaterThan(0).WithMessage("Quantity must be greater than zero.");
+            });
         }
     }
 }

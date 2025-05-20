@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using OrderService.Contracts.Models.Shared;
-
-namespace OrderService.Application.Orders.Commands.CreateOrder
+﻿namespace OrderService.Application.Orders.Commands.CreateOrder
 {
     public class PaymentDtoValidator : AbstractValidator<PaymentDto?>
     {

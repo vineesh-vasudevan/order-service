@@ -1,7 +1,7 @@
 ﻿using OrderService.Domain.Entities;
 using OrderService.Domain.ValueObjects;
 
-namespace OrderService.Mocks
+namespace OrderService.Mocks.Domain
 {
     public class OrderBuilder
     {
@@ -10,6 +10,7 @@ namespace OrderService.Mocks
         private OrderName _orderName = new("Test Order");
         private Address _shippingAddress = Address.Create("John", "Wick", "123 Main St", "CityA", "StateA", "10001", "US");
         private Address _billingAddress = Address.Create("John", "Wick", "123 Main St", "CityA", "StateA", "10001", "US");
+
         private Payment _payment = Payment.Create(
             amount: 129.98m,
             currency: Currency.USD,

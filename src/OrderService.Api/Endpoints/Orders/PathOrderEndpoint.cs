@@ -1,8 +1,4 @@
-﻿using Carter;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using OrderService.Application.Orders.Commands.UpdateOrder;
-using OrderService.Contracts.Models.Input;
+﻿using OrderService.Application.Orders.Commands.UpdateOrder;
 
 namespace OrderService.Api.Endpoints.Orders
 {

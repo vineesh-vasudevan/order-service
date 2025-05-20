@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using OrderService.Contracts.Models.Enums;
-using OrderService.Domain.Enums;
+﻿using OrderService.Contracts.Dto.Enums;
 
 namespace OrderService.Application.Common.MappingProfiles
 {

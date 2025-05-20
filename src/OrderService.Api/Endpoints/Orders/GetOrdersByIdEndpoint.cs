@@ -1,7 +1,4 @@
-﻿using Carter;
-using MediatR;
-using OrderService.Application.Orders.Queries.GetOrderById;
-using OrderService.Contracts.Models.Output;
+﻿using OrderService.Application.Orders.Queries.GetOrderById;
 
 namespace OrderService.Api.Endpoints.Orders
 {

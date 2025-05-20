@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using FluentAssertions;
 using OrderService.Application.Common.MappingProfiles;
-using OrderService.Contracts.Models.Enums;
-using OrderService.Contracts.Models.Output;
+using OrderService.Contracts.Dto.Enums;
+using OrderService.Contracts.Dto.Output;
 using OrderService.Domain.Entities;
 using OrderService.Domain.ValueObjects;
 

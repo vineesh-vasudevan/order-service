@@ -1,7 +1,4 @@
-﻿using Carter;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using OrderService.Application.OrderItems.Commands.CancelOrderItem;
+﻿using OrderService.Application.OrderItems.Commands.CancelOrderItem;
 
 namespace OrderService.Api.Endpoints.OrderItems
 {

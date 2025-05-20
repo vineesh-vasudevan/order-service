@@ -6,7 +6,7 @@ using OrderService.Domain.Entities;
 using OrderService.Domain.Enums;
 using OrderService.Domain.Exceptions;
 using OrderService.Domain.Repositories;
-using OrderService.Mocks;
+using OrderService.Mocks.Domain;
 
 namespace OrderService.Application.Tests.OrderItems.Commands.CancelOrderItem
 {
@@ -31,10 +31,10 @@ namespace OrderService.Application.Tests.OrderItems.Commands.CancelOrderItem
             // Arrange
             var orderId = Guid.NewGuid();
             var orderItemId = Guid.NewGuid();
-            var order = MockOrder(orderId, orderItemId);
+            var order = OrderMocks.MockOrder(orderId, orderItemId);
 
             var command = new CancelOrderItemCommand(orderId, orderItemId);
-           
+
             _orderRepository.GetByIdAsync(orderId, Arg.Any<CancellationToken>())
                 .Returns(Maybe<Order>.From(order));
 
@@ -50,7 +50,7 @@ namespace OrderService.Application.Tests.OrderItems.Commands.CancelOrderItem
             foreach (var item in order.Items)
             {
                 item.Status.Should().Be(OrderItemStatus.Cancelled);
-            }           
+            }
         }
 
         [Test]
@@ -80,7 +80,7 @@ namespace OrderService.Application.Tests.OrderItems.Commands.CancelOrderItem
             // Arrange
             var orderId = Guid.NewGuid();
             var orderItemId = Guid.NewGuid();
-            var order = MockOrder(orderId, orderItemId);
+            var order = OrderMocks.MockOrder(orderId, orderItemId);
 
             var command = new CancelOrderItemCommand(orderId, Guid.NewGuid());
 
@@ -104,7 +104,7 @@ namespace OrderService.Application.Tests.OrderItems.Commands.CancelOrderItem
             // Arrange
             var orderId = Guid.NewGuid();
             var orderItemId = Guid.NewGuid();
-            var order = MockOrder(orderId, orderItemId);
+            var order = OrderMocks.MockOrder(orderId, orderItemId);
 
             var command = new CancelOrderItemCommand(orderId, orderItemId);
 
@@ -112,7 +112,7 @@ namespace OrderService.Application.Tests.OrderItems.Commands.CancelOrderItem
                .Returns(order);
 
             _orderRepository.When(o => o.Update(order))
-                 .Do(_ => throw new InvalidOperationException());           
+                 .Do(_ => throw new InvalidOperationException());
 
             // Act
             Func<Task> act = async () => await _sut.Handle(command, CancellationToken.None);
@@ -122,21 +122,6 @@ namespace OrderService.Application.Tests.OrderItems.Commands.CancelOrderItem
             await _unitOfWork.Received(1).BeginTransactionAsync(Arg.Any<CancellationToken>());
             await _unitOfWork.Received(1).RollbackAsync(Arg.Any<CancellationToken>());
             await _unitOfWork.DidNotReceive().CommitAsync(Arg.Any<CancellationToken>());
-        }
-
-        private static Order MockOrder(Guid orderId, Guid orderItemId)
-        {
-            var item = new OrderItemBuilder()
-                .WithId(orderItemId)
-                .WithOrderId(orderId)
-                .WithQuantity(3)
-                .WithUnitPrice(20.00m)
-                .Build();
-
-            return new OrderBuilder()
-               .WithId(orderId)
-               .WithItem(item)
-               .Build();
         }
     }
 }

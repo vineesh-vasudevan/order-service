@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using OrderService.Application.Common.MappingProfiles;
 using OrderService.Application.Orders.Commands.CreateOrder;
 using OrderService.Shared.Behaviors;
@@ -18,6 +17,8 @@ namespace OrderService.Application
                 config.RegisterServicesFromAssembly(assembly);
                 config.AddOpenBehavior(typeof(ValidationBehavior<,>));
             });
+            services.AddFeatureManagement();
+            services.AddScoped<ÌCreateOrderCommandFactory, CreateOrderCommandFactory>();
             return services;
         }
     }

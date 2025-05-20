@@ -1,9 +1,4 @@
-﻿using MediatR;
-using OrderService.Domain.Exceptions;
-using OrderService.Domain.Repositories;
-using OrderService.Shared.CQRS;
-
-namespace OrderService.Application.OrderItems.Commands.UpdateOrderItem
+﻿namespace OrderService.Application.OrderItems.Commands.UpdateOrderItem
 {
     public class UpdateOrderItemHandler(IOrderRepository orderRepository, IUnitOfWork unitOfWork)
         : ICommandHandler<UpdateOrderItemCommand>

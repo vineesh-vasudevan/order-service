@@ -1,7 +1,7 @@
 ﻿using OrderService.Domain.Entities;
 using OrderService.Domain.ValueObjects;
 
-namespace OrderService.Mocks
+namespace OrderService.Mocks.Domain
 {
     public class OrderItemBuilder
     {

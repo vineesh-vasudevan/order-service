@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace OrderService.Application.OrderItems.Commands.CancelOrderItem
+﻿namespace OrderService.Application.OrderItems.Commands.CancelOrderItem
 {
     public class CancelOrderItemCommandValidator : AbstractValidator<CancelOrderItemCommand>
     {

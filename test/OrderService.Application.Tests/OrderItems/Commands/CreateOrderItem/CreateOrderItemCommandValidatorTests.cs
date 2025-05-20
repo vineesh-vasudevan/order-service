@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using FluentValidation.TestHelper;
 using OrderService.Application.OrderItems.Commands.CreateOrderItem;
-using OrderService.Contracts.Models.Input;
+using OrderService.Contracts.Dto.Input;
 
 namespace OrderService.Application.Tests.OrderItems.Commands.CreateOrderItem
 {

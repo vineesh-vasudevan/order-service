@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using OrderService.Contracts.Models.Output;
-using OrderService.Domain.Exceptions;
-using OrderService.Domain.Repositories;
-using OrderService.Shared.CQRS;
-
-namespace OrderService.Application.Orders.Queries.GetOrderById
+﻿namespace OrderService.Application.Orders.Queries.GetOrderById
 {
     public class GetOrderByIdQueryHandler(IOrderRepository orderRepository, IMapper mapper)
         : IQueryHandler<GetOrderByIdQuery, OrderDto>

@@ -1,6 +1,4 @@
-﻿using CSharpFunctionalExtensions;
-using OrderService.Domain.Enums;
-using OrderService.Domain.Repositories;
+﻿using OrderService.Domain.Repositories;
 
 namespace OrderService.Infrastructure.Data.Repositories
 {
@@ -37,7 +35,6 @@ namespace OrderService.Infrastructure.Data.Repositories
 
             return orders.AsReadOnly();
         }
-
 
         public async Task AddAsync(Order order, CancellationToken cancellationToken)
         {
